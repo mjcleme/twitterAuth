@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>Google Authentication</title>
+</head>
+<body>
+<script>
+function signInCallback(authResult) {
+  if (authResult.code) {
+    $.post('/auth/google/callback', { code: authResult.code})
+    .done(function(data) {
+      $('#signinButton').hide();
+    }); 
+  } else if (authResult.error) {
+    console.log('There was an error: ' + authResult.error);
+  }
+};
+</script>
+  <h2>Twitter Authentication</h2>
+<p>
+<a href="/auth/twitter">Sign in with Twitter</a>
+<div id="result"></div>
+</body>
+</html>
